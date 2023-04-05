@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
 
 namespace RestClient
 {
@@ -40,6 +35,8 @@ namespace RestClient
                 {
                     throw new ApplicationException("error code: " +  response.StatusCode);
                 }
+                
+                //Process the response stream...(cloud be JSON, XML or HTML)
 
                 using(Stream  responseStream = response.GetResponseStream())
                 {
@@ -51,7 +48,11 @@ namespace RestClient
                         }
                     }
                 }
+
+                //End of using ResponseStream
             }
+
+            //End of using response
 
             return strResponseValue;
         }
